@@ -1,0 +1,47 @@
+@import './font.scss';
+
+$head-foot-color: #323232;
+$padding-320: 3% 5%;
+$padding-768: 8% 3%;
+$padding-1440: 4% 12%;
+$tablet-min-size: 768px;
+$laptop-min-size: 1440px;
+$tablet-media-query: "screen and (min-width: #{$tablet-min-size})";
+$laptop-media-query: "screen and (min-width: #{$laptop-min-size})";
+// FONTS
+$regular: 'Avenir Next Regular', sans-serif;
+$demi-bold: 'Avenir Next Demi Bold', sans-serif;
+$bold: 'Avenir Next Bold', sans-serif;
+$light: 'Avenir Next light', sans-serif;
+
+//COLORS
+$black: #323232;
+$instock-blue: #004892;
+$BF-blue: #0095ff;
+$silver: #afafaf;
+$instock-blue-dark: #002f5f;
+$mercury: #e1e1e1;
+$albaster: #fafafa;
+
+
+$label-size-320: 12px; // 20 line height
+$label-size-768: 12px;
+// applied to contact address; email
+$contact-size-320: 13px;
+$contact-size-768: 14px;
+// applied to info-1,2 
+$p-size-320: 13px;
+// applied to info-1,2
+$p-size-768: 14px;
+// applied to contact title
+$h3-size-320: 14px;
+// applied to contact title
+$h3-size-768: 16px;
+// applied to quote, article title
+$h2-size-320: 16px;
+$h2-size-768: 24px;
+// applied to section titles
+$h1-size-320: 24px;
+$h1-size-768: 36px;
+$hero-320: $h2-size-768;
+$hero-768: 60px;

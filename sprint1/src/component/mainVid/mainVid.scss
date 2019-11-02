@@ -1,0 +1,67 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixin.scss';
+@import '../../scss/global.scss';
+
+.vid {
+    @include flex-col;
+    align-items: center;
+    background: black;
+    
+    &__video {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    &__video-src {
+        max-width: 500px;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        
+        @include tablet {
+            max-width: 1440px;
+        }
+    }
+
+    &__ctrl {
+        display: flex;
+        box-sizing: border-box;
+        position: absolute;
+        bottom: 16px;
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    &__play {
+        @include vid-ctrl-box-style(45px);  
+    }
+
+    &__bar {
+        @include vid-ctrl-box-style(calc(100% - 131px));
+        margin-left: 8px;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        @include tablet {
+            &::before {
+                //https://youtu.be/basf1lH1H-E?t=254
+                content: attr(data-label);
+                @include font($regular, $h3-size-320, unset)
+                color: white;
+                
+                position: absolute;
+                right: 10px;
+            }
+        }  
+    }
+
+    &__zoom-vol {
+        @include vid-ctrl-box-style(70px);
+        margin-left: 8px;
+        padding: 0 12px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+}

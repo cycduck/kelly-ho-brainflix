@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Nav from './component/nav/Nav';
+import MainVid from './component/mainVid/MainVid';
+import MainVidInfo from './component/mainVidInfo/MainVidInfo';
+import FormComments from './component/formComments/FromComments';
+import Comment from './component/comments/Comment';
+import Recommendations from './component/recommendation/Recommendation';
+import {sideVideo, mainVideo} from './data.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  state = {
+    mainVideoInfo: mainVideo,
+    sideVideoInfo: sideVideo
+  }
+
+  render() {
+    return (
+      <>
+        {console.log('testing to see if state transfers', this.state.b)}
+        <Nav />
+        <MainVid mainVidPass={this.state.mainVideoInfo} />
+        <main>
+            <div>
+                <MainVidInfo mainVidPass={this.state.mainVideoInfo} />
+                {/* information needs to be passed from the data.js */}
+                <FormComments />
+                <Comment />
+            </div>
+            <Recommendations sideVidPass={this.state.sideVideoInfo} />
+        </main>
+      </>
+    );
+  }
 }
 
 export default App;

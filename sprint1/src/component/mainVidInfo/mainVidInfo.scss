@@ -1,0 +1,66 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixin.scss';
+@import '../../scss/global.scss';
+
+.info {
+    @include padding-wrapper($padding-320);
+
+    &__title {
+        @include font($bold, $h1-size-320, unset);
+        @include proper;
+        margin-bottom: 16px;
+    }
+
+    &__box {
+        display:flex;
+        margin-bottom: 32px;
+    }
+
+    &__channel {
+        @include font($demi-bold, $h2-size-320, unset);
+        color: $black;
+        @include proper;
+    }
+
+    &__date {
+        @include font($regular, $h2-size-320, unset);
+        color: $silver;
+        margin-left: 8px;
+
+    }
+
+    &__stats-box {
+        display: flex;
+        align-content: center;
+        border-bottom: 1px solid $silver;
+        padding-bottom: 24px;
+    }
+
+    &__views {
+        
+    }
+
+    &__view-text {
+        @include font($regular, $h3-size-320, unset);
+        color: $black;
+        margin-left: 8px;
+    }
+
+    &__like {
+        margin-left: 32px;
+    }
+
+    &__like-text {
+        @include font($regular, $h3-size-320, unset);
+        color: $black;
+        margin-left: 8px;
+    }
+
+    &__desc {
+        @include font($regular, $p-size-320, unset);
+    }
+
+    &__comment-count {
+        @include font($demi-bold, $h3-size-320, unset);
+    }
+}

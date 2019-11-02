@@ -1,0 +1,52 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixin.scss';
+@import '../../scss/global.scss';
+
+.nav {
+    @include padding-wrapper($padding-320);
+    @include flex-col;
+    justify-content: center;
+
+    &__logo {
+        margin-bottom: 3%;
+    }
+
+    &__form {
+        // something
+        @include tablet {
+            display: flex;
+        }
+    }
+
+    &__search {
+        @include form-style;
+        padding-left: 42px;
+        background-image: url(../../assets/Icons/SVG/search.svg);
+        background-position: 16px center;
+        background-size: 20px;
+        background-repeat: no-repeat;
+        width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        margin-bottom: 8px;
+    }
+
+    &__flex-box {
+        display: flex;
+    }
+
+    &__button {
+        @include button-style-320;
+        width: calc(100% - 48px - 16px);
+        margin-right: 16px;
+    }
+
+    &__avatar {
+        border: 1px solid black;
+        border-radius: 100%;
+        width: 48px;
+        height: 48px;
+        overflow: hidden;
+        object-fit: cover;
+    }
+}

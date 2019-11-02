@@ -1,0 +1,43 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixin.scss';
+@import '../../scss/global.scss';
+
+.recommend {
+    @include padding-wrapper($padding-320);
+
+
+    &__title {
+        @include interactive-title-style;
+        margin-bottom: 40px;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__vid {
+        width: 120px;
+        height: 70px;
+        border-radius: 4px;
+    }
+
+    &__box {
+        width: 60%;
+        margin-left: 16px;
+    }
+
+    &__box-title {
+        @include font($demi-bold, $h3-size-320, unset);
+        color: $black;
+        margin-bottom: 0.8rem;
+        @include proper;
+        
+    }
+
+    &__box-author {
+        @include font($regular, $h3-size-320, unset);
+        color: $black;
+        @include proper;
+    }
+}

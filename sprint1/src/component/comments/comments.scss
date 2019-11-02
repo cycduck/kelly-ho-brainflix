@@ -1,0 +1,40 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixin.scss';
+@import '../../scss/global.scss';
+
+.comment {
+    display: flex;
+    @include padding-wrapper($padding-320);
+    
+    &__avatar {
+        border: 1px solid black;
+        border-radius: 100%;
+        width: 48px;
+        height: 48px;
+        overflow: hidden;
+    }
+
+    &__box {
+        @include font($regular, $contact-size-320, unset);
+        color: $black;
+        @include flex-col;
+        width: calc(100% - 51px);
+        margin-left: 16px;
+    }
+    &__box-name-date {
+        display: flex;
+        justify-content: space-between;
+        @include tablet {
+            justify-content: start;
+        }
+    }
+    &__box-name {
+        @include font($demi-bold, $contact-size-320, unset);
+        margin-right: 8px;
+        @include proper;
+    }
+
+    &__box-date {
+        color: #AFAFAF;
+    }
+}

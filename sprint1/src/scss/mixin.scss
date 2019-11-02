@@ -1,0 +1,126 @@
+@import './variables.scss';
+@import './font.scss';
+
+@mixin font($font, $size, $line) {
+  font: {
+    family: $font;
+    size: $size;
+  }
+  line-height: $line;
+}
+
+// if it's row then just use display
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin upper {
+  text-transform: uppercase;
+}
+
+@mixin proper {
+  text-transform: capitalize;
+}
+
+// VARIOUS WRAPPER PADDING 
+@mixin padding-wrapper($value) {
+  padding: $value;
+}
+
+@mixin form-style {
+    @include font($regular, $h3-size-320, unset)
+    border-radius: 4px;
+    border: 1px solid $silver;
+    background: $albaster;
+    padding: 16px;
+}
+
+@mixin vid-ctrl-box-style($width){
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: $width;
+  height: 30px;
+  background: rgba(0,0,0, 0.5);
+  border-radius: 4px;
+
+}
+// applied to NXT VID & Join convo
+@mixin interactive-title-style {
+  @include font($demi-bold, 14px, unset);
+  color: $silver;
+  @include upper;
+}
+
+// @mixin delete-like-style {
+//   align-self: flex-end;
+//   font-size: 10px;
+//   background: none;
+//   width: 20px;
+//   height: 10px;
+//   padding: 0;
+//   border: none;
+// }
+
+// ABOUT y GALLERY TITLES
+@mixin section-title-style {
+  @include font($bold, $h1-size-320, unset);
+  margin-bottom: 24px;
+}
+
+@mixin form-style-320 {
+  @include font($regular, $contact-size-320, unset);
+    color: #323232;
+    width: 100%;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+@mixin form-style-focus {
+  &:focus {
+    border: 2px solid #323232;
+    outline: none;  
+  }
+  
+}
+
+@mixin button-style-320 {
+  @include font($demi-bold, $p-size-320, unset);
+  @include upper;
+  color: white;
+  background: $BF-blue;
+  padding: 16px 0;
+  border: 1px solid $BF-blue;
+  border-radius: 4px;
+  &:hover {
+    background: $instock-blue;
+  }
+}
+// @mixin button-style-focus {
+//   &__
+// }
+// FOOTER contact name y company
+// this also include the media query
+@mixin footer-contact-title {
+  @include font($demi-bold, $h3-size-320, 22px);
+
+    @include tablet {
+      font-size: $h3-size-768;
+      line-height: 24px;
+    }
+}
+
+
+// MEDIA QUERIES
+@mixin tablet {
+  @media #{$tablet-media-query} {
+    @content;
+  }
+}
+@mixin laptop {
+  @media #{$laptop-media-query} {
+    @content;
+  }
+}

@@ -1,0 +1,73 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixin.scss';
+@import '../../scss/global.scss';
+
+.formComment {
+    @include padding-wrapper($padding-320);
+    @include flex-col;
+    align-items: center;
+    justify-content: center;
+    @include tablet {
+      @include padding-wrapper($padding-768);
+    } 
+  
+    @include laptop {
+      @include padding-wrapper($padding-1440);
+    } 
+    
+    background: #fff;
+  
+    &__box {
+      display: flex;
+      padding-bottom: 32px;
+      border-bottom: 1px solid $mercury;
+      width: 100%;
+    }
+      
+    &__face {
+      border: 1px solid black;
+      border-radius: 100%;
+      width: 48px;
+      height: 48px;
+      overflow: hidden;
+    }
+    &__avatar {
+      width: auto;
+      height: 100%;
+    }
+    &__form {
+      @include flex-col;
+      align-items: flex-start;
+      margin-left: 20px;
+      width: calc(100% - 48px - 20px);
+    }
+    
+    &__comment-label {
+      @include font($demi-bold, $contact-size-320, unset);
+      @include upper;
+      color: $silver;
+      margin-bottom: 8px;
+    }
+  
+    &__comment {
+      @include form-style-320;
+      padding: 15px;
+      height: 96px;
+      margin-bottom: 8px;
+      @include tablet {
+      margin-bottom: 24px;
+      }
+      box-sizing: border-box;
+      @include form-style-focus;
+    }
+  
+    &__submit {
+      @include button-style-320;
+      width: 100%;
+  
+      @include tablet {
+        width: 160px;
+        align-self: flex-end;
+      }
+    }
+}

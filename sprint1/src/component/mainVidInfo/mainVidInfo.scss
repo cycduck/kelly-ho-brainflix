@@ -4,7 +4,8 @@
 
 .info {
     @include padding-wrapper($padding-320);
-
+    @include width-container;
+    
     &__title {
         @include font($bold, $h1-size-320, unset);
         @include proper;

@@ -9,6 +9,11 @@
   line-height: $line;
 }
 
+@mixin width-container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
 // if it's row then just use display
 @mixin flex-col {
   display: flex;

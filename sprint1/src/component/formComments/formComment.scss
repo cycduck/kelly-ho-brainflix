@@ -4,6 +4,7 @@
 
 .formComment {
     @include padding-wrapper($padding-320);
+    @include width-container;
     @include flex-col;
     align-items: center;
     justify-content: center;

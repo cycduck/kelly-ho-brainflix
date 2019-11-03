@@ -13,6 +13,7 @@ export default class MainVid extends React.Component {
         return (
             
             <section className="vid">
+                {console.log(this.props.mainVidPass)}
                 <div className="vid__video">
                     <video className="vid__video-src" poster={this.props.mainVidPass.image}>
                         <source className="vid__video-source" src="#"

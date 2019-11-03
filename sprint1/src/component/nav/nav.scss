@@ -6,9 +6,21 @@
     @include padding-wrapper($padding-320);
     @include flex-col;
     justify-content: center;
+    @include width-container;
+
+    @include tablet {
+        @include padding-wrapper($padding-768);
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
 
     &__logo {
         margin-bottom: 3%;
+
+        @include tablet {
+            margin: 0;
+        }
     }
 
     &__form {
@@ -29,6 +41,11 @@
         overflow: hidden;
         box-sizing: border-box;
         margin-bottom: 8px;
+
+        @include tablet {
+            width: 288px;
+            margin: 0 24px 0 0;
+        }
     }
 
     &__flex-box {
@@ -39,6 +56,11 @@
         @include button-style-320;
         width: calc(100% - 48px - 16px);
         margin-right: 16px;
+
+        @include tablet {
+            margin-right: 24px;
+            width: 100px;
+        }
     }
 
     &__avatar {

@@ -3,9 +3,17 @@
 @import '../../scss/global.scss';
 
 .comment {
-    display: flex;
+    @include flex-col;
     @include padding-wrapper($padding-320);
+    @include width-container;
     
+    &__card {
+        display:flex;
+        padding: 32px 0;
+        box-sizing: border-box;
+        border-top: 1px solid $silver;
+        border-bottom: 1px solid $silver;
+    }
     &__avatar {
         border: 1px solid black;
         border-radius: 100%;

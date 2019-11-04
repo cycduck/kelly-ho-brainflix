@@ -3,16 +3,23 @@
 @import '../../scss/global.scss';
 
 .nav {
-    @include padding-wrapper($padding-320);
+    height: 169px;
+    padding: 0 $padding-320;
     @include flex-col;
     justify-content: center;
+    align-items: center;
     @include width-container;
+    box-sizing: border-box;
 
     @include tablet {
-        @include padding-wrapper($padding-768);
+        height: 80px;
+        padding: 0 $padding-768;
         flex-direction: row;
         justify-content: space-between;
-        
+    }
+
+    @include laptop {
+        padding: 0;
     }
 
     &__logo {
@@ -24,9 +31,10 @@
     }
 
     &__form {
-        // something
+        width: 100%;
         @include tablet {
             display: flex;
+            width: auto;
         }
     }
 
@@ -54,8 +62,10 @@
 
     &__button {
         @include button-style-320;
+        height: 50px;
         width: calc(100% - 48px - 16px);
         margin-right: 16px;
+        
 
         @include tablet {
             margin-right: 24px;

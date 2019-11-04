@@ -29,13 +29,14 @@ class App extends React.Component {
         <MainVid mainVidPass={this.state.mainVidInfo} />
         {/* information needs to be passed from the data.js */}
         <main>
-            <div>
-                <MainVidInfo mainVidPass={this.state.mainVidInfo} />
-                {/* {console.log({...this.state.mainVideoInfo})} */}
-                <FormComments />
-                <Comment mainVidPassComments={this.state.mainVidInfo.comments}/>
+            <div className="main__width-container">
+              <div>
+                  <MainVidInfo mainVidPass={this.state.mainVidInfo} />
+                  <FormComments />
+                  <Comment mainVidPassComments={this.state.mainVidInfo.comments}/>
+              </div>
+              <Recommendations sideVidPass={this.sideVidFilter()} />
             </div>
-            <Recommendations sideVidPass={this.sideVidFilter()} />
         </main>
       </>
     );

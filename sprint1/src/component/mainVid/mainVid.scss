@@ -2,6 +2,25 @@
 @import '../../scss/mixin.scss';
 @import '../../scss/global.scss';
 
+main {
+    @include laptop {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+  }
+  
+  .main__width-container {
+    padding: 0 $padding-320;
+    @include tablet {
+        padding: 0 $padding-768;
+    }
+    @include laptop {
+        display: flex;
+        @include width-container;
+    }
+  }
+
 .vid {
     @include flex-col;
     align-items: center;
@@ -19,7 +38,7 @@
         justify-content: center;
         
         @include tablet {
-            max-width: 944px;
+            max-width: 700px;
         }
     }
 
@@ -47,9 +66,8 @@
             &::before {
                 //https://youtu.be/basf1lH1H-E?t=254
                 content: attr(data-label);
-                @include font($regular, $h3-size-320, unset)
+                @include font($regular, $p-size-320, unset)
                 color: white;
-                
                 position: absolute;
                 right: 10px;
             }

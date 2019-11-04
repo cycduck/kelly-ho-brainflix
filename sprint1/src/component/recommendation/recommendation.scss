@@ -3,17 +3,22 @@
 @import '../../scss/global.scss';
 
 .recommend {
-    @include padding-wrapper($padding-320);
+    padding: 40px 0 0 0;
+    margin-left: 16px;
 
 
     &__title {
         @include interactive-title-style;
         margin-bottom: 40px;
     }
-
+    
+    &__width-container {
+        max-width: 410px;
+    }
     &__card {
         display: flex;
         flex-direction: row;
+        margin-bottom: 24px;
     }
 
     &__vid {
@@ -25,18 +30,20 @@
     &__box {
         width: 60%;
         margin-left: 16px;
+        padding: 0.3rem 0;
+        @include flex-col;
+        justify-content: space-between;
     }
 
     &__box-title {
         @include font($demi-bold, $h3-size-320, unset);
         color: $black;
-        margin-bottom: 0.8rem;
         @include proper;
         
     }
 
     &__box-author {
-        @include font($regular, $h3-size-320, unset);
+        @include font($regular, $h3-size-320, 1);
         color: $black;
         @include proper;
     }

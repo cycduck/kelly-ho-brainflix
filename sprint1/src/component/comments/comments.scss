@@ -4,18 +4,20 @@
 
 .comment {
     @include flex-col;
-    @include padding-wrapper($padding-320);
     @include width-container;
     
     &__card {
         display:flex;
-        padding: 32px 0;
+        padding: 32px 0 32px;
         box-sizing: border-box;
-        border-top: 1px solid $silver;
-        border-bottom: 1px solid $silver;
+        border-bottom: 1px solid $mercury;
+
+        @include tablet {
+            padding: 32px 40px 32px 0;
+        }
     }
     &__avatar {
-        border: 1px solid black;
+        background: $silver;
         border-radius: 100%;
         width: 48px;
         height: 48px;
@@ -26,7 +28,7 @@
         @include font($regular, $contact-size-320, unset);
         color: $black;
         @include flex-col;
-        width: calc(100% - 51px);
+        width: calc(100% - 64px);
         margin-left: 16px;
     }
     &__box-name-date {

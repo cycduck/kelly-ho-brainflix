@@ -22,7 +22,7 @@ export default class MainVid extends React.Component {
                     </video>
                     <div className="vid__ctrl">
                         <div className="vid__play"><img src={play} alt="play" /></div>
-                        <div className="vid__bar" data-label="00:00">
+                        <div className="vid__bar" data-label="00:00/00:00">
     
                         </div>
                         <div className="vid__zoom-vol">

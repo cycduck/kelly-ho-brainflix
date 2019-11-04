@@ -3,21 +3,17 @@
 @import '../../scss/global.scss';
 
 .formComment {
-    @include padding-wrapper($padding-320);
+    
     @include width-container;
     @include flex-col;
     align-items: center;
     justify-content: center;
-    @include tablet {
-      @include padding-wrapper($padding-768);
-    } 
-  
-    @include laptop {
-      @include padding-wrapper($padding-1440);
-    } 
-    
     background: #fff;
-  
+
+    @include tablet {
+      
+    }
+    
     &__box {
       display: flex;
       padding-bottom: 32px;
@@ -31,6 +27,9 @@
       width: 48px;
       height: 48px;
       overflow: hidden;
+      @include tablet {
+        margin-top: 23px;
+      }
     }
     &__avatar {
       width: auto;
@@ -41,8 +40,20 @@
       align-items: flex-start;
       margin-left: 20px;
       width: calc(100% - 48px - 20px);
+
+      @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
     
+    &__form-box{
+      @include tablet {
+        width: 440px;
+        @include flex-col;
+        // necessary to correct alignment issues
+      }
+    }
     &__comment-label {
       @include font($demi-bold, $contact-size-320, unset);
       @include upper;
@@ -55,11 +66,13 @@
       padding: 15px;
       height: 96px;
       margin-bottom: 8px;
-      @include tablet {
-      margin-bottom: 24px;
-      }
       box-sizing: border-box;
       @include form-style-focus;
+      
+      @include tablet {
+        margin-bottom: 0;
+        height: 50px;
+      }
     }
   
     &__submit {
@@ -69,6 +82,7 @@
       @include tablet {
         width: 160px;
         align-self: flex-end;
+        margin-right: 40px;
       }
     }
 }

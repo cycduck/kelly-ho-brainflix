@@ -3,18 +3,29 @@
 @import '../../scss/global.scss';
 
 .info {
-    @include padding-wrapper($padding-320);
     @include width-container;
-    
+    padding: 32px 0;
+    @include tablet {
+        padding: 48px 0 32px;
+    }
     &__title {
         @include font($bold, $h1-size-320, unset);
         @include proper;
         margin-bottom: 16px;
     }
-
     &__box {
+        @include flex-col;
+        border-bottom: 1px solid $mercury;
+        padding-bottom: 24px;
+        
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    &__box--channel {
         display:flex;
-        margin-bottom: 32px;
     }
 
     &__channel {
@@ -30,11 +41,9 @@
 
     }
 
-    &__stats-box {
+    &__box--stats {
         display: flex;
         align-content: center;
-        border-bottom: 1px solid $silver;
-        padding-bottom: 24px;
     }
 
     &__views {
@@ -59,6 +68,10 @@
 
     &__desc {
         @include font($regular, $p-size-320, unset);
+        padding: 24px 0 40px 0;
+        @include tablet {
+            width: 530px;
+        }
     }
 
     &__comment-count {

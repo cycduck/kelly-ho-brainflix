@@ -12,9 +12,11 @@ export default class FormComments extends React.Component {
                         <img className="formComment__avatar" src={avatar} alt="Avatar" />
                     </figure>
                     <form className="formComment__form" action="#">
-                        <label className="formComment__comment-label" htmlFor="comments">Join the conversation</label>
-
-                        <textarea className="formComment__comment" name="commentBox" placeholder="Write comment here" required></textarea>
+                        <div className="formComment__form-box">
+                            <label className="formComment__comment-label" htmlFor="comments">Join the conversation</label>
+    
+                            <textarea className="formComment__comment" name="commentBox" placeholder="Write comment here" required></textarea>
+                        </div>
                         <button className="formComment__submit" type="submit">comment</button>
                     </form>
                 </div>

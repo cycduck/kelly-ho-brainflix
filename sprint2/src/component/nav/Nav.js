@@ -2,6 +2,7 @@ import React from 'react';
 import './nav.scss';
 import logoImg from '../../assets/logo/Logo.svg'
 import avatar from '../../assets/Images/Mohan-muruge.jpg';
+import {Link} from 'react-router-dom';
 
 class Nav extends React.Component {
     // what is the react.component?
@@ -17,9 +18,11 @@ class Nav extends React.Component {
                 <form className="nav__form">
                     <input className="nav__search" type="text" placeholder="Search"/>
                     <div className="nav__flex-box">
-                        <button className="nav__button" type="submit">{'\uFF0B'} Upload</button>
+                    <Link className="nav__link" to="/upload">
+                        <button className="nav__button">{'\uFF0B'} Upload</button>
+                    </Link>
                         {/* unicode */}
-                        <img className="nav__avatar" src={avatar} alt="avatar"/>
+                    <img className="nav__avatar" src={avatar} alt="avatar"/>
                     </div>
                 </form>
             </nav>

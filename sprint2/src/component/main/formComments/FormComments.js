@@ -1,6 +1,6 @@
 import React from 'react';
 import './formComment.scss';
-import avatar from '../../assets/Images/Mohan-muruge.jpg';
+import avatar from '../../../assets/Images/Mohan-muruge.jpg';
 
 export default class FormComments extends React.Component {
     render() {

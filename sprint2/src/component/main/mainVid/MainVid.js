@@ -1,10 +1,10 @@
 import React from 'react';
 import './mainVid.scss';
-import play from '../../assets/Icons/SVG/play.svg';
-import pause from '../../assets/Icons/SVG/pause.svg';
-import scrub from '../../assets/Icons/SVG/scrubber-control.svg';
-import zoom from '../../assets/Icons/SVG/fullscreen.svg';
-import volume from '../../assets/Icons/SVG/volume.svg';
+import play from '../../../assets/Icons/SVG/play.svg';
+import pause from '../../../assets/Icons/SVG/pause.svg';
+import scrub from '../../../assets/Icons/SVG/scrubber-control.svg';
+import zoom from '../../../assets/Icons/SVG/fullscreen.svg';
+import volume from '../../../assets/Icons/SVG/volume.svg';
 
      
 

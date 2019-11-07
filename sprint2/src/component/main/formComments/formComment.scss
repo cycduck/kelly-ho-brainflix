@@ -1,6 +1,6 @@
-@import '../../scss/variables.scss';
-@import '../../scss/mixin.scss';
-@import '../../scss/global.scss';
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixin.scss';
+@import '../../../scss/global.scss';
 
 .formComment {
     
@@ -55,18 +55,13 @@
       }
     }
     &__comment-label {
-      @include font($demi-bold, $contact-size-320, unset);
-      @include upper;
-      color: $silver;
-      margin-bottom: 8px;
+      @include interactive-title-style
     }
   
     &__comment {
       @include form-style-320;
-      padding: 15px;
       height: 96px;
       margin-bottom: 8px;
-      box-sizing: border-box;
       @include form-style-focus;
       
       @include tablet {

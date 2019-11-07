@@ -1,13 +1,14 @@
 import React from 'react';
 import './mainVidInfo.scss';
-import view from '../../assets/Icons/SVG/views.svg';
-import like from '../../assets/Icons/SVG/likes.svg';
+import view from '../../../assets/Icons/SVG/views.svg';
+import like from '../../../assets/Icons/SVG/likes.svg';
 
 
 export default class MainVidInfo extends React.Component {
     
     render() {
-        const { title, description, channel, image, views, likes, duration, video, timestamp, comments } = this.props.mainVidPass;
+        const { title, description, channel, image, views, likes, duration, video, timestamp, comments } = this.props;
+        console.log(this.props)
         // destructure: info is now this.props.mainVidPass
 
         let commentNum = () => comments.length;

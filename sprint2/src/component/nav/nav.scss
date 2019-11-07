@@ -39,7 +39,7 @@
     }
 
     &__search {
-        @include form-style;
+        @include form-style-320;
         padding-left: 42px;
         background-image: url(../../assets/Icons/SVG/search.svg);
         background-position: 16px center;
@@ -59,20 +59,21 @@
     &__flex-box {
         display: flex;
     }
-
+    
     &__button {
         @include button-style-320;
         height: 50px;
-        width: calc(100% - 48px - 16px);
+        width: 100%;
+    }
+    &__link {
+        width: calc(100% - 48px - 16px);  
         margin-right: 16px;
         
-
         @include tablet {
-            margin-right: 24px;
             width: 100px;
-        }
+            margin-right: 24px;
+        }      
     }
-
     &__avatar {
         border: 1px solid black;
         border-radius: 100%;

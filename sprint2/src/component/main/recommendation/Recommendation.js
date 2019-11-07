@@ -1,8 +1,10 @@
 import React from 'react';
 import './recommendation.scss';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'; 
 
 
 export default class Recommendations extends React.Component {
+    
     
 
     render() {        
@@ -31,11 +33,17 @@ export default class Recommendations extends React.Component {
                             }
                         }  
                         
+                        console.log(this.props)
                         return(
                             <div className="recommend__card" key={id+title}>
-                                <img className="recommend__vid" src={image} alt="video preview"/>
+                                <Link to={`/${id}`}>
+                                    <img className="recommend__vid" src={image} alt="video preview" name={id} />
+                                </Link>
+                                {/* attached the ID as name, value won't work, and then every time it gets clicked, send ID */}
                                 <div className="recommend__box">
-                                    <p className="recommend__box-title">{titleTrim(title)}</p>
+                                    <Link to={`/${id}`}>
+                                        <p className="recommend__box-title" id={id} >{titleTrim(title)}</p>
+                                    </Link>
                                     <p className="recommend__box-author">{channel}</p>
                                 </div>
                             </div>

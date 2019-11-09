@@ -5,8 +5,6 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 export default class Recommendations extends React.Component {
     
-    
-
     render() {        
         let screenChecker = () => {
             let w = window.screen.width
@@ -14,7 +12,7 @@ export default class Recommendations extends React.Component {
         }
         let screenWidth = screenChecker()
         // storing the check in a variable so it doesn't keep looping 
-
+        
         return (
             <section className="recommend">
                 <h2 className="recommend__title">Next video</h2>
@@ -33,15 +31,15 @@ export default class Recommendations extends React.Component {
                             }
                         }  
                         
-                        console.log('checking what this.props', this.props)
+                        // console.log('checking what this.props', this.props)
                         return(
                             <div className="recommend__card" key={id+title}>
-                                <Link to={`/${id}`}>
-                                    <img className="recommend__vid" src={image} alt="video preview" name={id} />
+                                <Link to={`/${id}`} onClick={this.props.videoIdGrab}>
+                                    <img className="recommend__vid" src={image} alt="video preview" id={id} />
                                 </Link>
-                                {/* attached the ID as name, value won't work, and then every time it gets clicked, send ID */}
+                                {/* attached id, which is shared with <p>. Value won't work. When clicked, send id */}
                                 <div className="recommend__box">
-                                    <Link to={`/${id}`}>
+                                    <Link to={`/${id}`} onClick={this.props.videoIdGrab}>
                                         <p className="recommend__box-title" id={id} >{titleTrim(title)}</p>
                                     </Link>
                                     <p className="recommend__box-author">{channel}</p>

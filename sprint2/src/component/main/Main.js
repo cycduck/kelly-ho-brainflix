@@ -13,7 +13,6 @@ import Axios from 'axios';
 const url ="https://project-2-api.herokuapp.com";
 const key = "?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638";
 const vidURL = `${url}/videos${key}`;
-
 // https://project-2-api.herokuapp.com/videos/1af0jruup5gu?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638
 
 
@@ -25,10 +24,24 @@ export default class Main extends React.Component {
     sideVidInfo: sideVideo
   }
   
-  sideVidFilter = () => {
-    let filtered = this.state.sideVidInfo.filter(i => i.id !== this.state.mainVidInfo.id);
-    return filtered
+// https://scotch.io/tutorials/asynchronous-javascript-using-async-await
+// https://medium.com/better-programming/how-to-use-async-await-with-axios-in-react-e07daac2905f
+// https://medium.com/front-end-weekly/async-await-with-react-lifecycle-methods-802e7760d802
+  dataRetrival = async () => {
+    try {
+      const t = await Axios.get(vidURL)
+      const { data } = t;
+      this.setState({ 
+        sideVidInfo: data
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
+  componentDidMount() {
+    this.dataRetrival()
+  }
+  
 
   
   sideVidFilter = () => {

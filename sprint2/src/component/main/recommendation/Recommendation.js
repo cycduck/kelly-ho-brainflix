@@ -33,7 +33,7 @@ export default class Recommendations extends React.Component {
                             }
                         }  
                         
-                        console.log(this.props)
+                        console.log('checking what this.props', this.props)
                         return(
                             <div className="recommend__card" key={id+title}>
                                 <Link to={`/${id}`}>

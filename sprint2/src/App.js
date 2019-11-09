@@ -4,7 +4,7 @@ import Main from './component/main/Main';
 import Upload from './component/upload/Upload';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-
+// testing 
 
 class App extends React.Component {
   // JS class world, can't use declarations

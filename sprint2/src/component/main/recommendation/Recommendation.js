@@ -1,11 +1,13 @@
 import React from 'react';
 import './recommendation.scss';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 
 
 export default class Recommendations extends React.Component {
     
-    render() {        
+    render() {
+        // console.log('what is props in recom', this.props)
+
         let screenChecker = () => {
             let w = window.screen.width
             return w

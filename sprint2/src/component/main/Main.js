@@ -25,6 +25,11 @@ export default class Main extends React.Component {
     sideVidInfo: sideVideo
   }
   
+  sideVidFilter = () => {
+    let filtered = this.state.sideVidInfo.filter(i => i.id !== this.state.mainVidInfo.id);
+    return filtered
+  }
+
 // https://scotch.io/tutorials/asynchronous-javascript-using-async-await
 // https://medium.com/better-programming/how-to-use-async-await-with-axios-in-react-e07daac2905f
 // https://medium.com/front-end-weekly/async-await-with-react-lifecycle-methods-802e7760d802
@@ -39,9 +44,22 @@ export default class Main extends React.Component {
       console.log(error)
     }
   }
+
+  videoIdGrab = (e) => {
+    // grabs the ID from recommendations page
+    console.log('e target', e.target.id)
+    let mainURL = `${baseURL}/${e.target.id}${key}`
+    console.log('Problem the match params is one off, onClick is doing something', this.props.match.params.vidID)
+    this.componentDidUpdate(mainURL)
+    // this.mainVidRetrival(mainURL)
+    this.componentDidMount()
+    // generates the url and send to the func as a parameter
+  }
+  
   mainVidRetrival = async (url) => {
       const response = await Axios.get(url)
       const { data } = response;
+      console.log(response)
       this.setState({
         mainVidInfo: data
       })
@@ -52,22 +70,17 @@ export default class Main extends React.Component {
     // this.mainVidRetrival()
   }
   
-  videoIdGrab = (e) => {
-    let mainURL = `${baseURL}/${e.target.id}${key}`
-    this.mainVidRetrival(mainURL)
+  componentDidUpdate(url) {
+    console.log("match params after component ", this.props.match.params.vidID)
+    this.mainVidRetrival(url)
   }
   
   
-  sideVidFilter = () => {
-    let filtered = this.state.sideVidInfo.filter(i => i.id !== this.state.mainVidInfo.id);
-    return filtered
-  }
+  
   // console.log does not work here 
   render() {
-    console.log(this.props)
+      // console.log('what is props in main', this.props)
     
-    
-
     // declarations OK 
 
     return (
@@ -76,7 +89,7 @@ export default class Main extends React.Component {
 
       <>
       {/* JSX world */}
-        <MainVid mainVidPass={this.state.mainVidInfo} />
+      
         {/* information needs to be passed from the state drew from axios */}
         <main>
             <div className="main__width-container">

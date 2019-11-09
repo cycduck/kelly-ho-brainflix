@@ -16,7 +16,7 @@ export default class Upload extends React.Component {
                                 <div className="upload__video-box">
                                     <h2 className="upload__video-title">Video Thumbnail</h2>
                                     <figure className="upload__figure">
-                                        <img className="upload__img"src={coolBike}/>
+                                        <img className="upload__img"src={coolBike} alt="upload preview"/>
                                     </figure>
                                 </div>
                                 <form className="upload__form">

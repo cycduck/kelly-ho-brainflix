@@ -1,8 +1,9 @@
 import React from 'react';
 import './mainVid.scss';
 import play from '../../../assets/Icons/SVG/play.svg';
-import pause from '../../../assets/Icons/SVG/pause.svg';
-import scrub from '../../../assets/Icons/SVG/scrubber-control.svg';
+// import pause from '../../../assets/Icons/SVG/pause.svg';
+// import scrub from '../../../assets/Icons/SVG/scrubber-control.svg';
+// ^^^ the above are setups to be used later ^^^
 import zoom from '../../../assets/Icons/SVG/fullscreen.svg';
 import volume from '../../../assets/Icons/SVG/volume.svg';
 
@@ -13,7 +14,6 @@ export default class MainVid extends React.Component {
         return (
             
             <section className="vid">
-                {console.log(this.props.mainVidPass)}
                 <div className="vid__video">
                     <video className="vid__video-src" poster={this.props.mainVidPass.image}>
                         <source className="vid__video-source" src="#"

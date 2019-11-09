@@ -7,9 +7,8 @@ import like from '../../../assets/Icons/SVG/likes.svg';
 export default class MainVidInfo extends React.Component {
     
     render() {
-        const { title, description, channel, image, views, likes, duration, video, timestamp, comments } = this.props;
-        console.log(this.props)
-        // destructure: info is now this.props.mainVidPass
+        const { title, description, channel,  views, likes, timestamp, comments } = this.props;
+        // destructure: info is now this.props.mainVidPass: unassigned but may need later: image, duration, video
 
         let commentNum = () => comments.length;
         // Renders the comment-count: finds out the number of comments in the object 

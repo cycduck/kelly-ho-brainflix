@@ -1,6 +1,5 @@
 import React from 'react';
 import './comments.scss';
-import { returnStatement } from '@babel/types';
 
 export default class Comment extends React.Component {
     

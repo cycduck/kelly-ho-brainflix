@@ -15,7 +15,7 @@ export default class MainVid extends React.Component {
             
             <section className="vid">
                 <div className="vid__video">
-                    <video className="vid__video-src" poster={this.props.mainVidPass.image}>
+                    <video className="vid__video-src" poster={this.props.image}>
                         <source className="vid__video-source" src="#"
                                 type="video/mp4" />
                         Sorry, your browser doesn't support embedded videos.

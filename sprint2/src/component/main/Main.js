@@ -44,17 +44,6 @@ export default class Main extends React.Component {
       console.log(error)
     }
   }
-
-  videoIdGrab = (e) => {
-    // grabs the ID from recommendations page
-    console.log('e target', e.target.id)
-    let mainURL = `${baseURL}/${e.target.id}${key}`
-    console.log('Problem the match params is one off, onClick is doing something', this.props.match.params.vidID)
-    this.componentDidUpdate(mainURL)
-    // this.mainVidRetrival(mainURL)
-    this.componentDidMount()
-    // generates the url and send to the func as a parameter
-  }
   
   mainVidRetrival = async (url) => {
       const response = await Axios.get(url)
@@ -67,20 +56,20 @@ export default class Main extends React.Component {
   
   componentDidMount() {
     this.sidevidRetrival()
-    // this.mainVidRetrival()
   }
   
-  componentDidUpdate(url) {
-    console.log("match params after component ", this.props.match.params.vidID)
-    this.mainVidRetrival(url)
+  componentDidUpdate() {
+    // if the new ID gets triggered after click isn't the same as the state's ID, then update via setState
+    if (this.props.match.params.vidID !== this.state.mainVidInfo.id ) {
+      let mainURL = `${baseURL}/${this.props.match.params.vidID}${key}`
+      this.mainVidRetrival(mainURL)
+    }
   }
   
   
   
   // console.log does not work here 
   render() {
-      // console.log('what is props in main', this.props)
-    
     // declarations OK 
 
     return (
@@ -94,6 +83,7 @@ export default class Main extends React.Component {
         <main>
             <div className="main__width-container">
               <div>
+                  <MainVid {...this.state.mainVidInfo}/>
                   <MainVidInfo {...this.state.mainVidInfo} />
                   <FormComments />
                   <Comment mainVidPassComments={this.state.mainVidInfo.comments}/>

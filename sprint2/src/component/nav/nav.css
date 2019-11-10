@@ -174,7 +174,6 @@ a {
 }
 
 .nav {
-  padding: 3% 5%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,6 +184,36 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  height: 169px;
+  padding: 0 5%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    height: 80px;
+    padding: 0 3%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    padding: 0;
+  }
 }
 
 .nav__logo {
@@ -192,21 +221,36 @@ a {
 }
 
 @media screen and (min-width: 768px) {
+  .nav__logo {
+    margin: 0;
+  }
+}
+
+.nav__form {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
   .nav__form {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    width: auto;
   }
 }
 
 .nav__search {
   font-family: "Avenir Next Regular", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: unset;
-  border-radius: 4px;
-  border: 1px solid #afafaf;
+  color: #323232;
   background: #fafafa;
+  width: 100%;
   padding: 16px;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding-left: 42px;
   background-image: url(../../assets/Icons/SVG/search.svg);
   background-position: 16px center;
@@ -214,9 +258,15 @@ a {
   background-repeat: no-repeat;
   width: 100%;
   overflow: hidden;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav__search {
+    width: 288px;
+    margin: 0 24px 0 0;
+  }
 }
 
 .nav__flex-box {
@@ -235,12 +285,24 @@ a {
   padding: 16px 0;
   border: 1px solid #0095ff;
   border-radius: 4px;
-  width: calc(100% - 48px - 16px);
-  margin-right: 16px;
+  height: 50px;
+  width: 100%;
 }
 
 .nav__button:hover {
   background: #004892;
+}
+
+.nav__link {
+  width: calc(100% - 48px - 16px);
+  margin-right: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav__link {
+    width: 100px;
+    margin-right: 24px;
+  }
 }
 
 .nav__avatar {

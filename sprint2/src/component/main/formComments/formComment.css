@@ -174,7 +174,8 @@ a {
 }
 
 .formComment {
-  padding: 3% 5%;
+  max-width: 1080px;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,18 +190,6 @@ a {
       -ms-flex-pack: center;
           justify-content: center;
   background: #fff;
-}
-
-@media screen and (min-width: 768px) {
-  .formComment {
-    padding: 8% 3%;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .formComment {
-    padding: 4% 12%;
-  }
 }
 
 .formComment__box {
@@ -218,6 +207,12 @@ a {
   width: 48px;
   height: 48px;
   overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .formComment__face {
+    margin-top: 23px;
+  }
 }
 
 .formComment__avatar {
@@ -240,12 +235,41 @@ a {
   width: calc(100% - 48px - 20px);
 }
 
+@media screen and (min-width: 768px) {
+  .formComment__form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.formComment__form-box {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .formComment__form-box {
+    width: 440px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .formComment__comment-label {
   font-family: "Avenir Next Demi Bold", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: unset;
-  text-transform: uppercase;
   color: #afafaf;
+  text-transform: uppercase;
   margin-bottom: 8px;
 }
 
@@ -254,26 +278,27 @@ a {
   font-size: 13px;
   line-height: unset;
   color: #323232;
+  background: #fafafa;
   width: 100%;
-  border: 1px solid #E1E1E1;
+  padding: 16px;
+  border: 1px solid #e1e1e1;
   border-radius: 4px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 15px;
   height: 96px;
   margin-bottom: 8px;
-  box-sizing: border-box;
+}
+
+.formComment__comment:focus {
+  border: 1px solid #0095ff;
+  outline: none;
 }
 
 @media screen and (min-width: 768px) {
   .formComment__comment {
-    margin-bottom: 24px;
+    margin-bottom: 0;
+    height: 50px;
   }
-}
-
-.formComment__comment:focus {
-  border: 2px solid #323232;
-  outline: none;
 }
 
 .formComment__submit {
@@ -298,6 +323,7 @@ a {
     width: 160px;
     -ms-flex-item-align: end;
         align-self: flex-end;
+    margin-right: 40px;
   }
 }
 /*# sourceMappingURL=formComment.css.map */

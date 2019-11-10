@@ -174,7 +174,15 @@ a {
 }
 
 .info {
-  padding: 3% 5%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .info {
+    padding: 48px 0 32px;
+  }
 }
 
 .info__title {
@@ -189,7 +197,33 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 32px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .info__box {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.info__box--channel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .info__channel {
@@ -208,14 +242,12 @@ a {
   margin-left: 8px;
 }
 
-.info__stats-box {
+.info__box--stats {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-line-pack: center;
       align-content: center;
-  border-bottom: 1px solid #afafaf;
-  padding-bottom: 24px;
 }
 
 .info__view-text {
@@ -242,6 +274,13 @@ a {
   font-family: "Avenir Next Regular", sans-serif;
   font-size: 13px;
   line-height: unset;
+  padding: 24px 0 40px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .info__desc {
+    width: 530px;
+  }
 }
 
 .info__comment-count {

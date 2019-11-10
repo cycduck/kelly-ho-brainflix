@@ -3,21 +3,47 @@
 @import '../../scss/global.scss';
 
 .upload {
-    padding-top: 24px;
+    @include flex-col;
+    @include laptop {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
 
-    &__container {
-        padding: 0 $padding-320;
-    }
-    &__title {
-        @include font($bold, $h1-size-320, unset);
-    }
-    &__box {
-        @include flex-col;
+    &__section {
         padding-top: 24px;
-
-        @include laptop {
-            flex-direction: row;
+        padding: 24px $padding-320 0;
+        
+        
+        @include tablet {
+            padding-top: 48px;
         }
+        @include laptop {
+            width: 1080px;
+            padding: 24px 0 0;
+        }
+    }
+
+    &__title {
+        @include font($bold, $h1-size-320, unset); 
+        color: $black;
+        padding-bottom: 32px;
+
+        @include tablet {
+            @include font($bold, $h1-size-768, unset); 
+        }
+    }
+    
+    &__form {
+        @include tablet {
+            padding-top: 40px;
+            border-top: 1px solid $mercury;
+        }
+    }
+    &__info {
+        @include laptop {
+            display: flex;
+        } 
     }
     &__video-title {
         @include interactive-title-style;
@@ -25,7 +51,7 @@
     &__figure {
         display: flex;
         // correct margin collapse
-        width: 288px;
+        width: 100%;
         border-radius: 4px;
         overflow:hidden;
 
@@ -36,9 +62,11 @@
     &__img {
         width: 100%;
     }
-    &__form {
-        @include flex-col;
-        padding-top: 32px;
+    &__input {
+        @include laptop {
+            width: calc(100% - 368px);
+            padding: 0 0 0 24px;
+        }
     }
     &__title-label {
         @include interactive-title-style;
@@ -61,11 +89,22 @@
             height: 94px;
         }
     }
-    &__border {
-        // 
+    &__buttons {
+
+        @include tablet {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 40px;
+            border-top: 1px solid $mercury;
+        }
     }
-    &__border-box {
+    &__buttons-flex {
         @include flex-col;
+
+        @include tablet {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
     }
     &__cancel {
         @include font($demi-bold, $p-size-320, unset);
@@ -75,11 +114,15 @@
         padding: 16px 0;
         border: none;
         border-radius: 4px;
-        // &:hover {
-        //     background: $instock-blue;
-        // }
+
+        @include tablet {
+            width: 160px
+        }
     }
     &__publish {
         @include button-style-320;
+        @include tablet {
+            width: 160px
+        }
     }
 }

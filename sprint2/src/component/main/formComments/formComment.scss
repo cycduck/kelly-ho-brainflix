@@ -48,6 +48,7 @@
     }
     
     &__form-box{
+      width: 100%;
       @include tablet {
         width: 440px;
         @include flex-col;

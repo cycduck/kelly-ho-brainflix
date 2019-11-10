@@ -3,13 +3,14 @@
 @import '../../scss/global.scss';
 
 .nav {
-    height: 169px;
-    padding: 0 $padding-320;
     @include flex-col;
     justify-content: center;
+    height: 169px;
+    padding: 0 $padding-320;
     align-items: center;
     @include width-container;
     box-sizing: border-box;
+    border-bottom: 1px solid $mercury;
 
     @include tablet {
         height: 80px;

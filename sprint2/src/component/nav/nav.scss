@@ -3,26 +3,32 @@
 @import '../../scss/global.scss';
 
 .nav {
-    @include flex-col;
+    display: flex;
     justify-content: center;
+    align-items: center;
     height: 169px;
     padding: 0 $padding-320;
-    align-items: center;
-    @include width-container;
     box-sizing: border-box;
     border-bottom: 1px solid $mercury;
 
     @include tablet {
         height: 80px;
-        padding: 0 $padding-768;
-        flex-direction: row;
+    }
+    
+    &__width-container {
+        @include flex-col;
         justify-content: space-between;
-    }
+        align-items: center;
+        width: 100%;
 
-    @include laptop {
-        padding: 0;
-    }
+        @include tablet {
+            flex-direction: row;
+        }
 
+        @include laptop {
+            width: 1080px;
+        }
+    }
     &__logo {
         margin-bottom: 3%;
 

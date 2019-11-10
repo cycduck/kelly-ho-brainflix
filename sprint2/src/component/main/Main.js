@@ -32,9 +32,9 @@ export default class Main extends React.Component {
       const response = await Axios.get(vidURL)
       const { data } = response;
       
-      const i = Math.floor(Math.random() * Math.floor(data.length))
-      // randomly generating the front page YO 🤘
-      this.mainVidRetrival(data[i].id, data)
+      // const i = Math.floor(Math.random() * Math.floor(data.length))
+      // // Randomly generating a video on the home page
+      this.mainVidRetrival(data[0].id, data)
     } catch (error) {
       console.log(error)
     }
@@ -61,18 +61,14 @@ export default class Main extends React.Component {
     }
   }
   
-  
-  
   // console.log does not work here 
   render() {
     // declarations OK 
 
-    // if this.state is not null then turn
-
+    // if this.state is not null then render else render empty
     if (this.state.mainVidInfo && this.state.sideVidInfo) {
       return (
         //normal JS world
-  
         <>
         {/* JSX world */}
         

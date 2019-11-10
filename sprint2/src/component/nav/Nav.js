@@ -9,17 +9,19 @@ class Nav extends React.Component {
   render() {
     return (
       <nav className="nav">
-        <Link to="/"><img className="nav__logo" src={logoImg} alt="Brainflix logo" /></Link>
-        <form className="nav__form">
-          <input className="nav__search" type="text" placeholder="Search" />
-          <div className="nav__flex-box">
-            <Link className="nav__link" to="/upload">
-              <button className="nav__button">{'\uFF0B'} Upload</button>
-            </Link>
-            {/* unicode */}
-            <img className="nav__avatar" src={avatar} alt="avatar" />
-          </div>
-        </form>
+        <div className="nav__width-container">
+          <Link to="/"><img className="nav__logo" src={logoImg} alt="Brainflix logo" onClick={this.props.test}/></Link>
+          <form className="nav__form">
+            <input className="nav__search" type="text" placeholder="Search" />
+            <div className="nav__flex-box">
+              <Link className="nav__link" to="/upload">
+                <button className="nav__button">{'\uFF0B'} Upload</button>
+              </Link>
+              {/* unicode */}
+              <img className="nav__avatar" src={avatar} alt="avatar" />
+            </div>
+          </form>
+        </div>
       </nav>
     )
   }

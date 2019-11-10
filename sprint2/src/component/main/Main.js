@@ -21,8 +21,8 @@ export default class Main extends React.Component {
   // https://project-2-api.herokuapp.com/videos/1af0jruup5gu?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638
   
   state = {
-    mainVidInfo: mainVideo,
-    sideVidInfo: sideVideo
+    mainVidInfo:  null,
+    sideVidInfo: null
   }
   
   sideVidFilter = () => {
@@ -37,20 +37,19 @@ export default class Main extends React.Component {
     try {
       const response = await Axios.get(vidURL)
       const { data } = response;
-      this.setState({ 
-        sideVidInfo: data
-      })
+      
+      this.mainVidRetrival(data[0].id, data)
     } catch (error) {
       console.log(error)
     }
   }
   
-  mainVidRetrival = async (url) => {
-      const response = await Axios.get(url)
+  mainVidRetrival = async (id, sideVideoData) => {
+      const response = await Axios.get(`${baseURL}/${id}${key}`)
       const { data } = response;
-      console.log(response)
       this.setState({
-        mainVidInfo: data
+        mainVidInfo: data,
+        sideVidInfo: sideVideoData
       })
   }
   
@@ -61,8 +60,8 @@ export default class Main extends React.Component {
   componentDidUpdate() {
     // if the new ID gets triggered after click isn't the same as the state's ID, then update via setState
     if (this.props.match.params.vidID !== this.state.mainVidInfo.id ) {
-      let mainURL = `${baseURL}/${this.props.match.params.vidID}${key}`
-      this.mainVidRetrival(mainURL)
+      let id = this.props.match.params.vidID
+      this.mainVidRetrival(id, this.state.sideVidInfo)
     }
   }
   
@@ -72,26 +71,31 @@ export default class Main extends React.Component {
   render() {
     // declarations OK 
 
-    return (
-      
-      //normal JS world
+    // if this.state is not null then turn
 
-      <>
-      {/* JSX world */}
-      
-        {/* information needs to be passed from the state drew from axios */}
-        <main>
-            <div className="main__width-container">
-              <div>
-                  <MainVid {...this.state.mainVidInfo}/>
-                  <MainVidInfo {...this.state.mainVidInfo} />
-                  <FormComments />
-                  <Comment mainVidPassComments={this.state.mainVidInfo.comments}/>
+    if (this.state.mainVidInfo && this.state.sideVidInfo) {
+      return (
+        
+        //normal JS world
+  
+        <>
+        {/* JSX world */}
+        
+          {/* information needs to be passed from the state drew from axios */}
+          <main>
+              <div className="main__width-container">
+                <div>
+                    <MainVid {...this.state.mainVidInfo}/>
+                    <MainVidInfo {...this.state.mainVidInfo} />
+                    <FormComments />
+                    <Comment mainVidPassComments={this.state.mainVidInfo.comments}/>
+                </div>
+                <Recommendations sideVidPass={this.sideVidFilter()} videoIdGrab={this.videoIdGrab}/>
               </div>
-              <Recommendations sideVidPass={this.sideVidFilter()} videoIdGrab={this.videoIdGrab}/>
-            </div>
-        </main>
-      </>
-    );
+          </main>
+        </>
+      );
+    } 
+    return <> </>
   }
 }

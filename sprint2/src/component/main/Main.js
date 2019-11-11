@@ -36,7 +36,7 @@ export default class Main extends React.Component {
       // // Randomly generating a video on the home page
       this.mainVidRetrival(data[0].id, data)
     } catch (error) {
-      console.log(error)
+      alert("Information cannot be loaded, please try again")
     }
   }
   

@@ -11,6 +11,7 @@ const baseURL ="https://project-2-api.herokuapp.com/videos";
 const key = "?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638";
 const vidURL = `${baseURL}${key}`;
 
+
 export default class Main extends React.Component {
   // JS class world, functions only, can't use declarations 
     
@@ -41,13 +42,44 @@ export default class Main extends React.Component {
   }
   
   mainVidRetrival = async (id, sideVideoData) => {
+    try {
       const response = await Axios.get(`${baseURL}/${id}${key}`)
       const { data } = response;
       this.setState({
         mainVidInfo: data,
         sideVidInfo: sideVideoData
       })
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  // deep dive
+  postComment = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await Axios.post(`${baseURL}/${e.target.name}/comments${key}`, {
+        //https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638
+        "name": "testSubject",
+        "comment": e.target.commentBox.value
+      });
+      this.sidevidRetrival();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  deleteComment = async (e) => {
+    e.preventDefault();
+      try {
+        // console.log(vidId, commentId)
+        const response = await Axios.delete(`${baseURL}/${e.target.name}/comments/${e.target.value}${key}`);
+        this.sidevidRetrival();
+      } catch (error) {
+        alert(error);
+      }
+  }
+
   
   componentDidMount() {
     this.sidevidRetrival()
@@ -78,8 +110,9 @@ export default class Main extends React.Component {
               <div className="main__width-container">
                 <div className="main__flex-container">
                     <MainVidInfo {...this.state.mainVidInfo} />
-                    <FormComments />
-                    <Comment mainVidPassComments={this.state.mainVidInfo.comments}/>
+                    {/* {console.log(this.state.mainVidInfo)} */}
+                    <FormComments mainVidPass={this.state.mainVidInfo}postComment={this.postComment} />
+                    <Comment mainVidPassComments={this.state.mainVidInfo} delete={this.deleteComment}/>
                 </div>
                 <Recommendations sideVidPass={this.sideVidFilter()} videoIdGrab={this.videoIdGrab}/>
               </div>

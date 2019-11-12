@@ -11,7 +11,8 @@ export default class FormComments extends React.Component {
           <figure className="formComment__face">
             <img className="formComment__avatar" src={avatar} alt="Avatar" />
           </figure>
-          <form className="formComment__form" action="#">
+          {/* {console.log(this.props.mainVidInfo)} */}
+          <form className="formComment__form" action="#" onSubmit={this.props.postComment} name={this.props.mainVidPass.id}>
             <div className="formComment__form-box">
               <label className="formComment__comment-label" htmlFor="comments">Join the conversation</label>
 

@@ -88,11 +88,16 @@ export default class Main extends React.Component {
   
   componentDidUpdate() {
     // if the new ID gets triggered after click isn't the same as the state's ID, then update via setState
-    if (this.props.match.params.vidID !== this.state.mainVidInfo.id ) {
-      let id = this.props.match.params.vidID
-        if (id || this.state.mainVidInfo[0].id ) {
+    let id = this.props.match.params.vidID
+    if (id !== this.state.mainVidInfo.id ) {
+      console.log(id, this.state.mainVidInfo.id)
+        // if (id === undefined && id !== this.state.mainVidInfo.id) {
+        //   console.log('so the issue is that it keeps generating undefined which satisfied both cases', id === undefined)
+        //   this.mainVidRetrival('1af0jruup5gu', this.state.sideVidInfo)
+        // } else {
           this.mainVidRetrival(id, this.state.sideVidInfo)
-        }
+        // }
+        
       
     }
   }

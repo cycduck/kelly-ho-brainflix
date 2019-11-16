@@ -54,7 +54,7 @@ export default class Main extends React.Component {
 
     if (!!id) {
       try {
-        const response = await Axios.get(`${baseURL}/${id}${key}`)
+        const response = await Axios.get(`${baseURL}/${id}`)
         const { data } = response;
         this.setState({
           mainVidInfo: data,
@@ -72,7 +72,7 @@ export default class Main extends React.Component {
   postComment = async (e) => {
     e.preventDefault();
     try {
-      const response = await Axios.post(`${baseURL}/${e.target.name}/comments${key}`, {
+      const response = await Axios.post(`${baseURL}/${e.target.name}/comments`, {
         //https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638
         "name": "testSubject",
         "comment": e.target.commentBox.value
@@ -87,7 +87,7 @@ export default class Main extends React.Component {
     e.preventDefault();
       try {
         // console.log(vidId, commentId)
-        const response = await Axios.delete(`${baseURL}/${e.target.name}/comments/${e.target.value}${key}`);
+        const response = await Axios.delete(`${baseURL}/${e.target.name}/comments/${e.target.value}`);
         this.sidevidRetrival();
       } catch (error) {
         alert(error);

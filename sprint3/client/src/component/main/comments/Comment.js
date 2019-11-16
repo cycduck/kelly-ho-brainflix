@@ -3,8 +3,7 @@ import './comments.scss';
 
 export default class Comment extends React.Component {
   render() {
-    console.log(this.props.mainVidPassComments)
-    console.log(this.props.mainVidPassComments.comments)
+    
     return (
       <section className="comment">
         {this.props.mainVidPassComments.comments.map((info, i) => {

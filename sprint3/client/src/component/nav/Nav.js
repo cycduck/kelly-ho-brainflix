@@ -10,7 +10,7 @@ class Nav extends React.Component {
     return (
       <nav className="nav">
         <div className="nav__width-container">
-          <Link to="/"><img className="nav__logo" src={logoImg} alt="Brainflix logo" onClick={this.props.homeButton}/></Link>
+          <Link to="/1af0jruup5gu"><img className="nav__logo" src={logoImg} alt="Brainflix logo" onClick={this.props.homeButton}/></Link>
           <form className="nav__form">
             <input className="nav__search" type="text" placeholder="Search" />
             <div className="nav__flex-box">

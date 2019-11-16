@@ -7,9 +7,10 @@ import Recommendations from './recommendation/Recommendation';
 import Axios from 'axios';
 
 
-const baseURL ="https://project-2-api.herokuapp.com/videos";
+// const baseURL ="https://project-2-api.herokuapp.com/videos";
 const key = "?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638";
-const vidURL = `${baseURL}${key}`;
+// const vidURL = `${baseURL}${key}`;
+const baseURL ="http://localhost:8080/videos";
 
 
 export default class Main extends React.Component {
@@ -21,8 +22,12 @@ export default class Main extends React.Component {
   }
   
   sideVidFilter = () => {
-    let filtered = this.state.sideVidInfo.filter(i => i.id !== this.state.mainVidInfo.id);
-    return filtered
+    if (this.state.mainVidInfo) {
+      let filtered = this.state.sideVidInfo.filter(i => i.id !== this.state.mainVidInfo.id);
+      return filtered;
+    } else {
+      return this.state.sideVidInfo;
+    }
   }
 
   // https://scotch.io/tutorials/asynchronous-javascript-using-async-await
@@ -30,28 +35,36 @@ export default class Main extends React.Component {
   // https://medium.com/front-end-weekly/async-await-with-react-lifecycle-methods-802e7760d802
   sidevidRetrival = async () => {
     try {
-      const response = await Axios.get(vidURL)
+      const response = await Axios.get(baseURL)
       const { data } = response;
-      
+
+      this.setState({
+        sideVidInfo: data
+      })
       // const i = Math.floor(Math.random() * Math.floor(data.length))
       // // Randomly generating a video on the home page
-      this.mainVidRetrival(data[0].id, data)
     } catch (error) {
-      alert("Information cannot be loaded, please try again")
+      console.error("Information cannot be loaded, please try again")
     }
   }
   
-  mainVidRetrival = async (id, sideVideoData) => {
-    try {
-      const response = await Axios.get(`${baseURL}/${id}${key}`)
-      // TODO: i have all the videos and I dont need to get it again this needs to be a function
-      const { data } = response;
-      this.setState({
-        mainVidInfo: data,
-        sideVidInfo: sideVideoData
-      })
-    } catch (error) {
-      console.log(error)
+  mainVidRetrival = async (id) => {
+    console.log('Is the ID null before setState', id) //???
+    // issue it got the id and the revert back to undefined? in the second call, why is it calling twice?
+
+    if (!!id) {
+      try {
+        const response = await Axios.get(`${baseURL}/${id}${key}`)
+        const { data } = response;
+        this.setState({
+          mainVidInfo: data,
+        })
+        console.log('Is the ID null after setState', id)
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      console.error('the id is undefined.');
     }
   }
 
@@ -83,22 +96,50 @@ export default class Main extends React.Component {
 
   
   componentDidMount() {
-    this.sidevidRetrival()
+    this.sidevidRetrival();
   }
   
   componentDidUpdate() {
     // if the new ID gets triggered after click isn't the same as the state's ID, then update via setState
-    let id = this.props.match.params.vidID
-    if (id !== this.state.mainVidInfo.id ) {
-      console.log(id, this.state.mainVidInfo.id)
-        // if (id === undefined && id !== this.state.mainVidInfo.id) {
-        //   console.log('so the issue is that it keeps generating undefined which satisfied both cases', id === undefined)
-        //   this.mainVidRetrival('1af0jruup5gu', this.state.sideVidInfo)
-        // } else {
-          this.mainVidRetrival(id, this.state.sideVidInfo)
-        // }
-        
-      
+    // let paramId = this.props.match.params.vidID;
+    // let mainVidId = this.state.mainVidInfo ? this.state.mainVidInfo.id : null;
+    // console.log('there is no id at root', this.props.match)
+    
+    // console.log(paramId, mainVidId);
+    // // if NOT undefined, and the ID isn't already the main video's id
+    // if (!!paramId && paramId !== mainVidId) {
+    //   // get the details for THAT video and make sure, it hasn't been fetched already
+    //   this.mainVidRetrival(paramId);
+    // } else if (!paramId) {
+    //   // if the param ID IS undefined
+    //   // make sure that the mainVideo's id we have isn't the first video
+    //   // if so, get the first video's id and get the details for it
+    //   let firstVidId = this.state.sideVidInfo && this.state.sideVidInfo.length ? this.state.sideVidInfo[0].id : null;
+
+    //   // the first video ID isn't already the main video's id
+    //   if (firstVidId !== mainVidId) {
+    //     this.mainVidRetrival(firstVidId);
+    //   }
+    // }
+
+    // Credit goes to Yash
+    // K: Does the mainVidInfo State exists? if not, assign mainVidId with the ID, otherwise give it null
+    // K: IF1: when it first loads, it will be null
+    // K: IF2: when nxt vid clicked, it will be bikers vid (previous state) aka 1af
+    let mainVidId = this.state.mainVidInfo ? this.state.mainVidInfo.id : null;
+    // K: Does the sideVidInfo state exist and that it has something inside the array? If not, assign the first id to firstVidId
+    // K: IF1: when it first loads, sideVidRetrieve is triggered, so firstVidId = [0].id
+    // K: IF2: when nxt vid clicked, sideVidRetrieve is triggered, so firstVidId = [0].id
+    let firstVidId = this.state.sideVidInfo && this.state.sideVidInfo.length ? this.state.sideVidInfo[0].id : null;
+    // K: Is the link undefine/exists? If not, assign idToRetrieveVidFor to firstVidId 
+    // K: IF1: when it first loads, it will have nothing, and firstVid = [0].id
+    // K: IF2: when nxt vid clicked, it exists, and firstVid = nxt vid clicked
+    let idToRetrieveVidFor = this.props.match.params.vidID ? this.props.match.params.vidID : firstVidId;
+
+    // K: IF1: when it first loads, id[0] !== null, this.mainVidRetrival(id[0])
+    // K: IF2: when nxt vid clicked, nxt vid clicked id != 1af, this.mainVidRetrival(nxt vid clicked id)
+    if (idToRetrieveVidFor !== mainVidId) {
+      this.mainVidRetrival(idToRetrieveVidFor);
     }
   }
   

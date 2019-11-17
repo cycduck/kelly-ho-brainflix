@@ -47,4 +47,7 @@
     &__box-date {
         color: #AFAFAF;
     }
+    &__delete {
+        @include button-style-320;
+    }
 }

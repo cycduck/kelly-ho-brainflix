@@ -4,7 +4,7 @@ import MainVidInfo from './mainVidInfo/MainVidInfo';
 import FormComments from './formComments/FormComments';
 import Comment from './comments/Comment';
 import Recommendations from './recommendation/Recommendation';
-import Axios from 'axios';
+import axios from 'axios';
 
 
 // const baseURL ="https://project-2-api.herokuapp.com/videos";
@@ -35,7 +35,7 @@ export default class Main extends React.Component {
   // https://medium.com/front-end-weekly/async-await-with-react-lifecycle-methods-802e7760d802
   sidevidRetrival = async () => {
     try {
-      const response = await Axios.get(baseURL)
+      const response = await axios.get(baseURL)
       const { data } = response;
 
       this.setState({
@@ -54,7 +54,7 @@ export default class Main extends React.Component {
 
     if (!!id) {
       try {
-        const response = await Axios.get(`${baseURL}/${id}`)
+        const response = await axios.get(`${baseURL}/${id}`)
         const { data } = response;
         this.setState({
           mainVidInfo: data,
@@ -71,13 +71,17 @@ export default class Main extends React.Component {
   // deep dive
   postComment = async (e) => {
     e.preventDefault();
+    const vidId = e.target.name 
+    // bypassing the "synthetic event is reused for performance reason" by storing the value to a variable, see delete for method 2
+    // https://medium.com/front-end-weekly/async-await-with-react-lifecycle-methods-802e7760d802
     try {
-      const response = await Axios.post(`${baseURL}/${e.target.name}/comments`, {
+      const response = await axios.post(`${baseURL}/${vidId}/comments`, {
         //https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638
-        "name": "testSubject",
+        "name": "Chuck Norris",
         "comment": e.target.commentBox.value
       });
-      this.sidevidRetrival();
+      this.mainVidRetrival(vidId);
+      // at the time of the post, state somehow still has 3 intead of 4
     } catch (error) {
       console.log(error);
     }
@@ -85,13 +89,14 @@ export default class Main extends React.Component {
 
   deleteComment = async (e) => {
     e.preventDefault();
-      try {
-        // console.log(vidId, commentId)
-        const response = await Axios.delete(`${baseURL}/${e.target.name}/comments/${e.target.value}`);
-        this.sidevidRetrival();
-      } catch (error) {
-        alert(error);
-      }
+    e.persist();
+    try {
+      // console.log(vidId, commentId)
+      const response = await axios.delete(`${baseURL}/${e.target.name}/comments/${e.target.value}`);
+      this.mainVidRetrival(e.target.name);
+    } catch (error) {
+      alert(error);
+    }
   }
 
   

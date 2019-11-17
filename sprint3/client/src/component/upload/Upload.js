@@ -1,9 +1,25 @@
 import React from 'react';
 import coolBike from '../../assets/Images/coolbike.jpg';
 import './upload.scss';
+import axios from 'axios';
+
 
 export default class Upload extends React.Component {
 
+  uploadVid = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:8080/upload', {
+      // the variable cannot be the same as the data array!
+      title: e.target.vidTitle.value,
+      // inside the request body, there's a title property 32:08
+      channel: "Chuck Norris",
+      description: e.target.videoDesc.value,
+      duration: "00:00",
+      video: 'https://blazepress.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_540/MTI4OTk1Mjc0MzI3NzMwODE5/1.webp',
+    }).catch(err => {
+      console.log(err)
+    })
+  }
   render() {
 
     return (
@@ -11,7 +27,7 @@ export default class Upload extends React.Component {
         <main className="upload">
           <section className="upload__section">
               <h1 className="upload__title">Upload Video</h1>
-                <form className="upload__form">
+                <form className="upload__form" onSubmit={this.uploadVid}>
                   <div className="upload__info">
                     <div className="upload__preview">
                       <h2 className="upload__video-title">Video Thumbnail</h2>
@@ -20,9 +36,9 @@ export default class Upload extends React.Component {
                       </figure>
                     </div>
                     <div className ="upload__input">
-                      <label className="upload__title-label" htmlfor="vidTitle">Title your video</label>
+                      <label className="upload__title-label" htmlFor="vidTitle">Title your video</label>
                       <input className="upload__name" type="text" name="vidTitle" placeholder="Add a title of your video" required />
-                      <label className="upload__desc-label" htmlfor="videoDesc">Add a video description</label>
+                      <label className="upload__desc-label" htmlFor="videoDesc">Add a video description</label>
                       <textarea className="upload__desc" name="videoDesc" placeholder="Add a description of your video" required />
                     </div>
                   </div>

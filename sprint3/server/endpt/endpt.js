@@ -1,6 +1,6 @@
 const express = require('express');
-const uuidv4 = require('uuid/v4');
-const nanoid = require('nanoid');
+const uuidv4 = require('uuid/v4'); // for comments
+const nanoid = require('nanoid'); // for vids
 const data = require('../data');
 
 // PATH: /videos/:vidId

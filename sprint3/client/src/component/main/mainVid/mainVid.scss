@@ -81,6 +81,12 @@ main {
         }  
     }
 
+    &__bar-line {
+        background: black;
+        height: 5px;
+        width: 85%;
+    }
+
     &__zoom-vol {
         @include vid-ctrl-box-style(70px);
         margin-left: 8px;

@@ -8,9 +8,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 class App extends React.Component {
   // JS class world, can't use declarations
   // console.log does not work here 
-  homeButton = (e) => {
-    console.log('testing', e.target)
-  }
   
   render() {
     // declarations OK 

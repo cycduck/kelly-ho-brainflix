@@ -13,7 +13,6 @@ export default class FormComments extends React.Component {
           </figure>
           {/* {console.log(this.props.mainVidInfo)} */}
           <form className="formComment__form" action="#" onSubmit={this.props.postComment} name={this.props.mainVidPass.id}>
-            {console.log(this.props.mainVidPass.id)}
             <div className="formComment__form-box">
               <label className="formComment__comment-label" htmlFor="comments">Join the conversation</label>
 

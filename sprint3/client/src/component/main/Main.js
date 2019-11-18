@@ -49,8 +49,6 @@ export default class Main extends React.Component {
   }
   
   mainVidRetrival = async (id) => {
-    console.log('Is the ID null before setState', id) //???
-    // issue it got the id and the revert back to undefined? in the second call, why is it calling twice?
 
     if (!!id) {
       try {
@@ -59,12 +57,12 @@ export default class Main extends React.Component {
         this.setState({
           mainVidInfo: data,
         })
-        console.log('Is the ID null after setState', id)
+        // 'Is the ID null after setState?', id
       } catch (error) {
         console.log(error)
       }
     } else {
-      console.error('the id is undefined.');
+      alert('the id is undefined.');
     }
   }
 
@@ -76,12 +74,10 @@ export default class Main extends React.Component {
     // https://medium.com/front-end-weekly/async-await-with-react-lifecycle-methods-802e7760d802
     try {
       const response = await axios.post(`${baseURL}/${vidId}/comments`, {
-        //https://project-2-api.herokuapp.com/videos/1af0jruup5gu/comments?api_key=add3816a-9a16-42e2-8a1c-a9c9c9400638
         "name": "Chuck Norris",
         "comment": e.target.commentBox.value
       });
       this.mainVidRetrival(vidId);
-      // at the time of the post, state somehow still has 3 intead of 4
     } catch (error) {
       console.log(error);
     }
@@ -91,7 +87,6 @@ export default class Main extends React.Component {
     e.preventDefault();
     e.persist();
     try {
-      // console.log(vidId, commentId)
       const response = await axios.delete(`${baseURL}/${e.target.name}/comments/${e.target.value}`);
       this.mainVidRetrival(e.target.name);
     } catch (error) {
@@ -105,27 +100,7 @@ export default class Main extends React.Component {
   }
   
   componentDidUpdate() {
-    // if the new ID gets triggered after click isn't the same as the state's ID, then update via setState
-    // let paramId = this.props.match.params.vidID;
-    // let mainVidId = this.state.mainVidInfo ? this.state.mainVidInfo.id : null;
-    // console.log('there is no id at root', this.props.match)
     
-    // console.log(paramId, mainVidId);
-    // // if NOT undefined, and the ID isn't already the main video's id
-    // if (!!paramId && paramId !== mainVidId) {
-    //   // get the details for THAT video and make sure, it hasn't been fetched already
-    //   this.mainVidRetrival(paramId);
-    // } else if (!paramId) {
-    //   // if the param ID IS undefined
-    //   // make sure that the mainVideo's id we have isn't the first video
-    //   // if so, get the first video's id and get the details for it
-    //   let firstVidId = this.state.sideVidInfo && this.state.sideVidInfo.length ? this.state.sideVidInfo[0].id : null;
-
-    //   // the first video ID isn't already the main video's id
-    //   if (firstVidId !== mainVidId) {
-    //     this.mainVidRetrival(firstVidId);
-    //   }
-    // }
 
     // Credit goes to Yash
     // K: Does the mainVidInfo State exists? if not, assign mainVidId with the ID, otherwise give it null

@@ -17,7 +17,7 @@ export default class Upload extends React.Component {
       duration: "00:00",
       video: 'https://blazepress.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_540/MTI4OTk1Mjc0MzI3NzMwODE5/1.webp',
     }).catch(err => {
-      console.log(err)
+      alert(err)
     })
   }
   render() {

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 export default class Recommendations extends React.Component {
 
   render() {
-    // console.log('what is props in recom', this.props)
 
     let screenChecker = () => {
       let w = window.screen.width
@@ -33,7 +32,6 @@ export default class Recommendations extends React.Component {
               }
             }
 
-            // console.log('checking what this.props', this.props)
             return (
               <div className="recommend__card" key={id + title}>
                 <Link to={`/${id}`} onClick={this.props.videoIdGrab}>
